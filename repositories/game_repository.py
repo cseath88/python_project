@@ -12,3 +12,13 @@ def save(game):
     id = results[0]['id']
     game.id = id
     return game
+
+
+def select_all():
+    games = [ ]
+    sql = "SELECT * FROM games"
+    results = run_sql(sql)
+    for row in results:
+        game = Game(row['title'], row['description'], row['stock_level'], row['buy_cost'], row['sell_price'], row['platform_id'], row['id'])
+        games.append(game)
+    return games

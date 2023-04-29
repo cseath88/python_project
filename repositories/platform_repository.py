@@ -12,3 +12,4 @@ def save(platform):
     id = results[0]['id']
     platform.id = id
     return platform
+
