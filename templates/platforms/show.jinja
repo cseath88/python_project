@@ -3,6 +3,12 @@
 {% block content %}
 <h1> {{ platform.platform_name }} </h1>
 
-<h3></h3>
+    {% for game in games %}
+    <tr>
+        <td><a href="/games/{{game.id}}" class="links">{{game.title}}</a></td>
+        <td></td>
+        <td>Current Stock: {{game.stock_level}}</td>
+    </tr>   
+    {% endfor %}
 
 {% endblock %}

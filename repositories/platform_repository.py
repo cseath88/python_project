@@ -41,3 +41,14 @@ def delete(id):
     sql = "DELETE FROM products WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+def games(platform):
+    games = [ ]
+    sql = "SELECT * FROM games WHERE platform_id = %s"
+    values = [platform.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        game = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'], row['platform_id'], row['id'])
+        games.append(game)
+    return games
