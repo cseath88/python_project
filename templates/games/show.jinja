@@ -1,0 +1,10 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1> {{game.title}} </h1>
+
+<h4>{{ game.description }}</h4>
+
+<p>Current stock: {{ game.stock_level }}</p>
+
+{% endblock %}

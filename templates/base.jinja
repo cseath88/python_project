@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/buttons.css') }}">
+</head>
+<body>
+<main class="flex flex--row">
+  <nav>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/games">Games</a>
+      </li>
+      <li>
+        <a href="/platforms">Platforms</a>
+      </li>
+    </ul>
+  </nav>
+  <section id="content">
+      {% block content %}
+
+      {% endblock%}
+  </section>
+  </main>
+</body>
+</html>

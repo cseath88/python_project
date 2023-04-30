@@ -1,0 +1,12 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>Platforms</h1>
+
+<p>List of our current platforms</p>
+    {% for platform in platforms %}
+    <tr>
+        <td><a href="/platforms/{{ platform.id }}"> {{ platform.platform_name }} </a></td>
+    </tr>
+    {% endfor %}
+{% endblock %}

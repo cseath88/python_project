@@ -1,0 +1,12 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>Game Stock</h1>
+
+<p>List of all of our current stock</p>
+    {% for game in games %}
+    <tr>
+        <td><a href="/games/{{ game.id }}"> {{ game.title }} </a></td>
+    </tr>
+    {% endfor %}
+{% endblock %}
