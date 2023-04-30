@@ -1,5 +1,6 @@
-DROP TABLE IF EXISTS platforms CASCADE;
-DROP TABLE IF EXISTS games CASCADE;
+DROP TABLE IF EXISTS games;
+DROP TABLE IF EXISTS platforms;
+
 
 CREATE TABLE platforms (
     id SERIAL PRIMARY KEY,
@@ -11,7 +12,7 @@ CREATE TABLE games (
     title VARCHAR(255),
     description VARCHAR(255),
     stock_level INT,
-    buy_cost DECIMAL(10, 2),
+    buy_price DECIMAL(10, 2),
     sell_price DECIMAL(10, 2),
     platform_id INT REFERENCES platforms(id)
 );
