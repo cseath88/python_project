@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS platforms;
 
 CREATE TABLE platforms (
     id SERIAL PRIMARY KEY,
+    game_id INT REFERENCES games(id),
     platform_name VARCHAR(255)
 );
 
