@@ -3,6 +3,7 @@ from flask import Blueprint
 from models.platform import Platform
 
 import repositories.platform_repository as platform_repository
+import repositories.game_repository as game_repository
 
 platforms_blueprint = Blueprint("platforms", __name__)
 
@@ -13,6 +14,6 @@ def platforms():
 
 @platforms_blueprint.route("/platforms/<id>")
 def show(id):
-    platform = platform_repository.select(id)
-    games = platform_repository.games(platform)
-    return render_template("platforms/show.jinja", platform = platform, games = games)
+    platforms = platform_repository.select(id)
+    games = game_repository.select_all()
+    return render_template("platforms/show.jinja", platforms = platforms, games = games)

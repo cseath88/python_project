@@ -44,6 +44,4 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def game_on_platform(platform):
-    games [ ]
-    sql = "SELECT games.* FROM games INNER JOIN platforms ON platform"
+

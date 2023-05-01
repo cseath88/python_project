@@ -1,0 +1,47 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>Add a new game</h1>
+<form action="/games" method="post">
+
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" placeholder="Title" required autofocus>
+    </div>
+
+    <div>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" placeholder="Description" >
+    </div>
+
+    <div>
+        <label for="stock-level">Stock Level:</label>
+        <input type="text" id="stock-level" name="stock_level" placeholder="Stock Level" >
+    </div>
+
+    <div>
+        <label for="buy-price">Buy Price:</label>
+        <input type="text" id="buy-price" name="buy_price" placeholder="Buy Price" >
+    </div>
+
+    <div>
+        <label for="sell-price">Sell Price:</label>
+        <input type="text" id="sell-price" name="sell_price" placeholder="Sell Price" >
+    </div>
+
+    <div>
+        <label for="platform">Platform:</label>
+        <select id="platform" name="platform_id">
+        {% for platform in platforms %}
+            <option value="{{ platforms.id }}">{{ platform.platform_name }}</option>
+        {% endfor %}
+        </select>
+    </div>
+
+
+
+    <button type="submit">Add Game</button>
+
+</form>
+
+{% endblock %}

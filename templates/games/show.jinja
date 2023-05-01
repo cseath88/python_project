@@ -1,13 +1,13 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-<h1> {{game.title}} </h1>
+<h1> {{games.title}} </h1>
 
-<p>{{ game.description }}</p>
-<p>{{ game.stock_level }}</p>
-<p>{{ game.buy_price }}</p>
-<p>{{ game.sell_price }}</p>
-<p>Current stock: {{ game.stock_level }}</p>
+<p>{{ games.description }}</p>
+<p>{{ games.stock_level }}</p>
+<p>{{ games.buy_price }}</p>
+<p>{{ games.sell_price }}</p>
+<p>Current stock: {{ games.stock_level }}</p>
 <td><a href="/games"> Back to all games </a></td>
 
 {% endblock %}
