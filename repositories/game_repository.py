@@ -53,3 +53,8 @@ def platform(game):
         platform = Platform(row['name'], row['id'])
         platform.append(platform)
     return platform
+
+def update(game):
+    sql = "UPDATE games SET (title, description, stock_level, buy_price, sell_price, platform_id) = (%s, %s, %s,%s, %s, %s) WHERE id = %s"
+    values = [game.title, game.description, game.stock_level, game.buy_price, game.sell_price, game.platform.id, game.id]
+    run_sql(sql, values)

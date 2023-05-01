@@ -41,3 +41,21 @@ def post_new_game():
 def delete_game(id):
     game_repository.delete(id)
     return redirect("/games")
+
+@games_blueprint.route("/games/<id>/edit", methods=['GET'])
+def edit_game(id):
+    game = game_repository.select(id)
+    platforms = platform_repository.select_all()
+    return render_template('games/edit.jinja', game = game, platforms = platforms)
+
+@games_blueprint.route("/games/<id>", methods=['POST'])
+def post_edit_game(id):
+    title = request.form['title']
+    description = request.form['description']
+    stock_level = request.form['stock_level']
+    buy_price = request.form['buy_price']
+    sell_price = request.form['sell_price']
+    platform = platform_repository.select(request.form['platform_id'])
+    game = Game(title, description, stock_level, buy_price, sell_price, platform, id)
+    game_repository.update(game)
+    return redirect('/games')

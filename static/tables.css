@@ -1,0 +1,9 @@
+
+.low-stock {
+    background-color: #5bc017; 
+}
+
+.out-of-stock {
+    background-color: #ce4949; 
+    color: #3e9b2e; 
+}

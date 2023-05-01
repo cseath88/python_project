@@ -1,14 +1,32 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-<h1>Game Stock</h1>
-
-<p>List of all of our current stock</p>
-    {% for game in games %}
+<h1>Game Inventory</h1>
+<table>
     <tr>
-        <td><a href="/games/{{ game.id }}"> 
-        <p>{{ game.title }}</p> 
-        <p>{{ game.description }}</p> {{ game.stock_level }} {{ game.buy_price }} {{ game.sell_price }} {{ game.platform_name }} </a></td>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Stock Level</th>
+        <th>Buy Price</th>
+        <th>Sell Price</th>
+        <th>Platform</th>
+    </tr>
+
+    {% for game in games %}
+    <tr {% if game.stock_level <= 5 %}class="low-stock"{% elif game.stock_level == 0 %}class="out-of-stock"{% endif %}>
+        <td><a href="/games/{{ game.id }}" class="links">{{ game.title }}</a></td>
+        <td>{{ game.description }}</td>
+        <td>{{ game.stock_level }}</td> 
+        <td>{{ game.buy_price }}</td> 
+        <td>{{ game.sell_price }}</td> 
+        <td>{{ game.platform_name }}</td> 
     </tr>
     {% endfor %}
+
+
+
+
 {% endblock %}
+
+
+
