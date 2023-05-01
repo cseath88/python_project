@@ -26,6 +26,7 @@
 <p>{{ games.stock_level }}</p>
 <p>{{ games.buy_price }}</p>
 <p>{{ games.sell_price }}</p>
+<p>{{ games.platform.platform_name }}</p>
 <p>Current stock: {{ games.stock_level }}</p>
 <form action="/games/{{ games.id }}/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete"/>

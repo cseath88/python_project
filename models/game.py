@@ -7,3 +7,7 @@ class Game:
         self.sell_price = sell_price
         self.platform = platform
         self.id = id
+
+    def calculate_markup(self):
+        markup = self.sell_price - self.buy_price
+        return round(markup, 2)

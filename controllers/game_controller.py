@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.game import Game
-from models.platform import Platform
 
 import repositories.game_repository as game_repository
 import repositories.platform_repository as platform_repository

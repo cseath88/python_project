@@ -10,6 +10,7 @@
         <th>Buy Price</th>
         <th>Sell Price</th>
         <th>Platform</th>
+        <th>Markup</th>
     </tr>
 
     {% for game in games %}
@@ -19,7 +20,8 @@
         <td>{{ game.stock_level }}</td> 
         <td>{{ game.buy_price }}</td> 
         <td>{{ game.sell_price }}</td> 
-        <td>{{ game.platform_name }}</td> 
+        <td>{{ game.platform.platform_name }}</td>
+        <td>{{ game.calculate_markup() }}</td>
     </tr>
     {% endfor %}
 
