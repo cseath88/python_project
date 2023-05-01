@@ -6,11 +6,10 @@ from models.platform import Platform
 import repositories.platform_repository as platform_repository
 
 def save(game):
-    sql = "INSERT INTO games (title, description, stock_level, buy_price, sell_price, platform_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
+    sql = "INSERT INTO games (title, description, stock_level, buy_price, sell_price, platform_id) VALUES (%s, %s, %s, %s, %s, %s) RETURNING id"
     values = [game.title, game.description, game.stock_level, game.buy_price, game.sell_price, game.platform.id]
     results = run_sql(sql, values)
-    id = results[0]['id']
-    game.id = id
+    game.id = results[0]['id']
     return game
 
 
@@ -44,4 +43,13 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+def platform(game):
+    platform = [ ]
+    sql = "SELECT * FROM platforms WHERE game_id = %s"
+    values = [game.id]
+    results = run_sql(sql, values)
 
+    for row in results:
+        platform = Platform(row['name'], row['id'])
+        platform.append(platform)
+    return platform

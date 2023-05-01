@@ -26,12 +26,13 @@ def add_new_game():
 
 @games_blueprint.route("/games",  methods=['POST'])
 def post_new_game():
+    platform  = platform_repository.select(request.form['platform_id'])
     title = request.form['title']
     description = request.form['description']
     stock_level = request.form['stock_level']
     buy_price = request.form['buy_price']
     sell_price = request.form['sell_price']
-    platform  = platform_repository.select(request.form['platform_id'])
     game = Game(title, description, stock_level, buy_price, sell_price, platform)
     game_repository.save(game)
     return redirect('/games')
+
