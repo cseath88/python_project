@@ -9,5 +9,7 @@
 <p>{{ games.sell_price }}</p>
 <p>Current stock: {{ games.stock_level }}</p>
 <td><a href="/games"> Back to all games </a></td>
-
+<form action="/games/{{ games.id }}/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete"/>
+</form>
 {% endblock %}

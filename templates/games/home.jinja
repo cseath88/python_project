@@ -6,7 +6,9 @@
 <p>List of all of our current stock</p>
     {% for game in games %}
     <tr>
-        <td><a href="/games/{{ game.id }}"> {{ game.title }} </a></td>
+        <td><a href="/games/{{ game.id }}"> 
+        <p>{{ game.title }}</p> 
+        <p>{{ game.description }}</p> {{ game.stock_level }} {{ game.buy_price }} {{ game.sell_price }} {{ game.platform_name }} </a></td>
     </tr>
     {% endfor %}
 {% endblock %}

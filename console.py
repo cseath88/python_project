@@ -36,7 +36,7 @@ game_repository.save(game3)
 game4 = Game("The Last Of Us", "The Last of Us is a 2013 action-adventure game developed by Naughty Dog.", "36", "28.00", "30.00", platform2)
 game_repository.save(game4)
 
-game5 = Game("Super Mario Odyssey", "Super Mario Odyssey is a 2017 platform game developed and published by Nintendo.", "34", "26.00", "45.00", platform4)
+game5 = Game("Super Mario Odyssey", "Super Mario Odyssey is a 2017 platform game developed and published by Nintendo.", "0", "26.00", "45.00", platform4)
 game_repository.save(game5)
 
 game6 = Game("Xenoblade Chronicles 2", "Xenoblade Chronicles 2[a] is a 2017 action role-playing game developed by Monolith Soft.", "12", "22.00", "40.00", platform4)

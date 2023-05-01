@@ -16,7 +16,8 @@ def games():
 @games_blueprint.route("/games/<id>")
 def show(id):
     games = game_repository.select(id)
-    return render_template("games/show.jinja", games = games)
+    platforms = platform_repository.select(id)
+    return render_template("games/show.jinja", games = games, platforms = platforms)
 
 @games_blueprint.route("/games/new", methods=['GET'])
 def add_new_game():
@@ -24,7 +25,7 @@ def add_new_game():
     platforms = platform_repository.select_all()
     return render_template("games/new.jinja", games = games, platforms = platforms)
 
-@games_blueprint.route("/games",  methods=['POST'])
+@games_blueprint.route("/games", methods=['POST'])
 def post_new_game():
     platform  = platform_repository.select(request.form['platform_id'])
     title = request.form['title']
@@ -34,5 +35,9 @@ def post_new_game():
     sell_price = request.form['sell_price']
     game = Game(title, description, stock_level, buy_price, sell_price, platform)
     game_repository.save(game)
-    return redirect('/games')
+    return redirect("/games")
 
+@games_blueprint.route("/games/<id>/delete", methods=['POST'])
+def delete_game(id):
+    game_repository.delete(id)
+    return redirect("/games")
