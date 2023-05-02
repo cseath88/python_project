@@ -19,7 +19,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        game = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'], row['platform_id'], row['id'])
+        platform = platform = platform_repository.select(row['platform_id'])
+        game = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'], platform, row['id'])
         games.append(game)
     return games
 
@@ -31,8 +32,20 @@ def select(id):
 
     if results:
         result = results[0]
-        game = Game(result['title'], result['description'], result['stock_level'], result['buy_price'], result['sell_price'], result['platform_id'], result['id'])
+        platform = platform_repository.select(result['platform_id'])
+        game = Game(result['title'], result['description'], result['stock_level'], result['buy_price'], result['sell_price'], platform, result['id'])
     return game
+
+def select_by_platform(platform):
+    games = []
+    sql = "SELECT * FROM games WHERE platform_id = %s"
+    values = [platform.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        games = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'], row['id'])
+    games.append(games)
+    return games
 
 def delete_all():
     sql = "DELETE FROM games"

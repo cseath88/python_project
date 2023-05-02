@@ -1,0 +1,15 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+<h1>Add a new Platform</h1>
+<form action="/platforms" method="post">
+
+    <div>
+        <label for="platform-name">Title:</label>
+        <input type="text" id="platform-name" name="platform_name" placeholder="Platform Name" required autofocus>
+    </div>
+    <button type="submit">Add Platform</button>
+
+</form>
+
+{% endblock %}
