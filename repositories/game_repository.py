@@ -1,7 +1,6 @@
 from db.run_sql import run_sql
 
 from models.game import Game
-from models.platform import Platform
 
 import repositories.platform_repository as platform_repository
 
@@ -44,17 +43,6 @@ def delete(id):
     sql = "DELETE FROM games WHERE id = %s"
     values = [id]
     run_sql(sql, values)
-
-# def platform(game):
-#     # platform = [ ]
-#     # sql = "SELECT * FROM platforms WHERE game_id = %s"
-#     # values = [game.id]
-#     # results = run_sql(sql, values)
-
-#     # for row in results:
-#     #     platform = Platform(row['name'], row['id'])
-#     #     platform.append(platform)
-#     # return platform
 
 def update(game):
     sql = "UPDATE games SET (title, description, stock_level, buy_price, sell_price, platform_id) = (%s, %s, %s,%s, %s, %s) WHERE id = %s"

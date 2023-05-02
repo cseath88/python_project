@@ -1,9 +1,45 @@
 
-.low-stock {
-    background-color: #5bc017; 
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.out-of-stock {
-    background-color: #ce4949; 
-    color: #3e9b2e; 
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr.out-of-stock {
+    background-color: #ffcccc;
+}
+
+tr.low-stock {
+    background-color: #ffffcc;
+}
+
+a.links {
+    text-decoration: none;
+    color: blue;
+}
+
+a.links:hover {
+    color: red;
+}
+
+.platforms-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.platforms-table th,
+.platforms-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.platforms-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
 }

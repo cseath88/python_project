@@ -28,3 +28,23 @@ def post_new_platform():
     platform_name = request.form['platform_name']
     platform = Platform(platform_name)
     platform_repository.save(platform)
+    return redirect("/platforms")
+
+@platforms_blueprint.route("/platforms/<id>/delete", methods=['POST'])
+def delete_platform(id):
+    platform_repository.delete(id)
+    return redirect("/platforms")
+
+@platforms_blueprint.route("/platforms/<id>/edit", methods=['GET'])
+def edit_platform(id):
+    platforms = platform_repository.select(id)
+    return render_template('platforms/edit.jinja', platforms = platforms)
+
+@platforms_blueprint.route("/platforms/<id>", methods=['POST'])
+def post_edit_platform(id):
+    platform_name = request.form['platform_name']
+    platform = Platform(platform_name, id)
+    platform_repository.update(platform)
+    return redirect('/platforms')
+
+# start from here

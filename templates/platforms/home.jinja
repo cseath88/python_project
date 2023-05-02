@@ -3,10 +3,18 @@
 {% block content %}
 <h1>Platforms</h1>
 
-<p>List of our current platforms</p>
-    {% for platform in platforms %}
-    <tr>
-        <td><a href="/platforms/{{ platform.id }}"> {{ platform.platform_name }} </a></td>
-    </tr>
-    {% endfor %}
+    <table class="platforms-table">
+        <thead>
+        <tr>
+            <th>Platform Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for platform in platforms %}
+            <tr>
+            <td><a href="/platforms/{{ platform.id }}">{{ platform.platform_name }}</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

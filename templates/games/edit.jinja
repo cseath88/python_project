@@ -1,15 +1,15 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-
+<h1> Make Changes To A Game</h1>
 <form action="/games/{{game.id}}" method="post">
     <div>
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{game.title}}" required autofocus>
     </div>
-                {# add back in "required" #}
+
     <div>
-        <label for="description">Description:</label>
+        <label for="description" class="description-label">Description:</label>
         <input type="text" id="description" name="description" value="{{game.description}}"> 
     </div>
 
@@ -40,7 +40,7 @@
         </select>
     </div>
 
-    <button type="submit">Edit Game</button>
+    <button type="submit">Submit</button>
 
 </form>
 

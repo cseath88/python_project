@@ -2,18 +2,28 @@
 
 {% block content %}
 <h1> {{games.title}} </h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Stock Level</th>
+            <th>Buy Price</th>
+            <th>Sell Price</th>
+            <th>Platform</th>
+            <th>Markup</th>
+        </tr>
+            <td><a href="/games/{{ games.id }}" class="links">{{ games.title }}</a></td>
+            <td>{{ games.description }}</td>
+            <td>{{ games.stock_level }}</td> 
+            <td>{{ games.buy_price }}</td> 
+            <td>{{ games.sell_price }}</td> 
+            <td>{{ games.platform.platform_name }}</td>
+            <td>{{ games.calculate_markup() }}</td>
+    </table>
 
-<p>{{ games.description }}</p>
-<p>{{ games.stock_level }}</p>
-<p>{{ games.buy_price }}</p>
-<p>{{ games.sell_price }}</p>
-<p>{{ games.platform.platform_name }}</p>
-<p>Current stock: {{ games.stock_level }}</p>
-<form action="/games/{{ games.id }}/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete"/>
-</form>
-
-<p><a href="/games/{{games.id}}/edit">Edit</a></p>
-
-<td><a href="/games"> Back to all games </a></td>
+    <p><a href="/games/{{games.id}}/edit">Edit</a></p>
+    <form action="/games/{{ games.id }}/delete" method="POST">
+            <input class="delete-button" type="submit" value="Delete"/>
+    </form>
+    <td><a href="/games"> Back to all games </a></td>
 {% endblock %}

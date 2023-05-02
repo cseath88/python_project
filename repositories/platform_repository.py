@@ -3,7 +3,6 @@ from db.run_sql import run_sql
 from models.game import Game
 from models.platform import Platform
 
-import repositories.game_repository as game_repository
 
 def save(platform):
     sql = "INSERT INTO platforms (platform_name) VALUES (%s) RETURNING *"
@@ -38,7 +37,7 @@ def delete_all():
     run_sql(sql)
 
 def delete(id):
-    sql = "DELETE FROM products WHERE id = %s"
+    sql = "DELETE FROM platforms WHERE id = %s"
     values = [id]
     run_sql(sql, values)
 
@@ -54,4 +53,8 @@ def game_platform(platform):
         game_platform.append(game)
     return game_platform
 
+def update(platform):
+    sql = "UPDATE platforms SET platform_name = %s WHERE id = %s"
+    values = [platform.platform_name, platform.id]
+    run_sql(sql, values)
 
