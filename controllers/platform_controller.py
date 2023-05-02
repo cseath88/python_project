@@ -15,9 +15,8 @@ def platforms():
 @platforms_blueprint.route("/platforms/<id>")
 def show(id):
     platform = platform_repository.select(id)
-    games = game_repository.select_by_platform(platform)
+    games = platform_repository.game_platform(platform)
     return render_template("platforms/show.jinja", platform = platform, games = games)
-
 
 @platforms_blueprint.route("/platforms/new", methods=['GET'])
 def add_new_platform():

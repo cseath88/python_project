@@ -42,3 +42,16 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
+# This function is for getting the platform ID for a game so I can display it on the Platform page
+def game_platform(platform):
+    game_platform = [ ]
+    sql = "SELECT * FROM games WHERE platform_id = %s"
+    values = [platform.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        game = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'],row['platform_id'], row['id'])
+        game_platform.append(game)
+    return game_platform
+
+

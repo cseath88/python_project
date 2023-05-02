@@ -36,17 +36,6 @@ def select(id):
         game = Game(result['title'], result['description'], result['stock_level'], result['buy_price'], result['sell_price'], platform, result['id'])
     return game
 
-def select_by_platform(platform):
-    games = []
-    sql = "SELECT * FROM games WHERE platform_id = %s"
-    values = [platform.id]
-    results = run_sql(sql, values)
-
-    for row in results:
-        games = Game(row['title'], row['description'], row['stock_level'], row['buy_price'], row['sell_price'], row['id'])
-    games.append(games)
-    return games
-
 def delete_all():
     sql = "DELETE FROM games"
     run_sql(sql)
@@ -56,16 +45,16 @@ def delete(id):
     values = [id]
     run_sql(sql, values)
 
-def platform(game):
-    platform = [ ]
-    sql = "SELECT * FROM platforms WHERE game_id = %s"
-    values = [game.id]
-    results = run_sql(sql, values)
+# def platform(game):
+#     # platform = [ ]
+#     # sql = "SELECT * FROM platforms WHERE game_id = %s"
+#     # values = [game.id]
+#     # results = run_sql(sql, values)
 
-    for row in results:
-        platform = Platform(row['name'], row['id'])
-        platform.append(platform)
-    return platform
+#     # for row in results:
+#     #     platform = Platform(row['name'], row['id'])
+#     #     platform.append(platform)
+#     # return platform
 
 def update(game):
     sql = "UPDATE games SET (title, description, stock_level, buy_price, sell_price, platform_id) = (%s, %s, %s,%s, %s, %s) WHERE id = %s"

@@ -3,8 +3,26 @@
 {% block content %}
 <h1> {{platform.platform_name}} </h1>
 
-{% for game in games %}
-    <div>{{ game.title }}</div>
-{% endfor %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Stock Level</th>
+        <th>Buy Price</th>
+        <th>Sell Price</th>
+        <th>Markup</th>
+    </tr>
+    {% for game in games %}
+    <tr>
+        <td><a href="/games/{{game.id}}" class="links">{{game.title}}</a></td>
+        <td>{{ game.description }}</td>
+        <td>{{ game.stock_level }}</td>
+        <td>{{ game.buy_price }}</td>
+        <td>{{ game.sell_price }}</td>
+        <td>{{ game.calculate_markup() }}</td>
+    </tr>   
+</table>
+    {% endfor %}
+
 {% endblock %}
 
